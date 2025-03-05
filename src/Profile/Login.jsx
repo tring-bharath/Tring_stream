@@ -1,0 +1,80 @@
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import * as yup from 'yup';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Toaster,toast } from 'sonner';
+import axios from 'axios';
+
+const Login = () => {
+
+
+  const schema = yup.object().shape({
+    email: yup.string().email().required(),
+    password: yup.string().min(8).required()
+  })
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
+
+  const onSubmit = async (user) => {
+    console.log(user);
+
+    const query = `
+    query {
+      login(email: "${user.email}", password: "${user.password}")
+      
+    }
+`;
+    try {
+      const response = await axios.post("http://localhost:3000/graphql", { query });
+      console.log(response);
+
+      const username = response.data.data.login;
+
+      if (username == "InvalidCredentials") {
+        toast.error("Invalid Credentials")
+        return;
+      }
+      if (username == "UserNotFound") {
+        console.log("Email address not registered");
+        toast.error("Email address not registered")
+        return;
+      }
+      toast.error(`Welcome ${username}`)
+
+    } catch (error) {
+      toast.error("Something went wrong")
+    }
+  };
+
+  return (
+    <div>
+      <Toaster />
+      <form className="form d-flex flex-column container " onSubmit={handleSubmit(onSubmit)}>
+        <h3 className="text-center">Login</h3>
+        <label className="mt-3">Email:</label>
+        <input
+          className="form-control border-success"
+          type="email"
+          {...register("email")}
+        />
+        <p className="text-danger">{errors.email?.message}</p>
+        <label>Password:</label>
+        <input
+          className="form-control border-success"
+          type="password"
+          {...register("password")}
+        />
+        <p className="text-danger">{errors.password?.message}</p>
+        <button className="p-2 bg-primary mt-4 text-white" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
+  )
+}
+
+export default Login

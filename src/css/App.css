@@ -1,0 +1,39 @@
+.side-bar
+{
+  height: 100vh;
+  padding:0px 60px 0px 10px;
+  background-image: linear-gradient(to right,grey,grey,grey,rgb(255, 255, 255));
+  transition: 1s;
+  position: inherit;
+}
+h5{
+  display: none;
+  transition: 1s;
+}
+.side-bar:hover h5{
+  display: block;
+  transition: 1s ;
+
+}
+.link
+{
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  column-gap: white !important;
+}
+.thumbnail
+{
+  height: 150px;
+  width: 300px;
+}
+.video-card{
+  height: 230px;
+  width: 300px;
+  
+}
+.video-cards
+{
+  gap: 20px;
+}
