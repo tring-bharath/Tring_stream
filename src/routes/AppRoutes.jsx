@@ -5,8 +5,10 @@ import Landingpage from '../Profile/Landingpage'
 import Search from '../dashboard/Search'
 import Wathclist from '../dashboard/Wathclist'
 import Login from '../Profile/login'
+import Profile from '../Profile/profiles'
 import Signup from '../Profile/signup'
 import Dashboard from '../dashboard/Dashboard'
+import Videopreview from '../components/Videopreview'
 
 const AppRoutes = () => {
   return (
@@ -17,12 +19,14 @@ const AppRoutes = () => {
       <Route path='/' element={<Dashboard/>}/>
         <Route path='Search' element={<Search/>}/>
         <Route path='WatchList' element={<Wathclist/>}/>
+        <Route path='profile' element={<Profile/>}/>
       </Route>
-      <Route path="/Registration" element={<Landingpage/>}>
-        <Route path='login' element={<Login/>}/>
+      <Route path="/registration" element={<Landingpage/>}>
+        <Route path='' element={<Login/>}/>
         <Route path='signup' element={<Signup/>}/>
           
       </Route>
+      <Route path='/videoPlayer' element={<Videopreview/>}/>
       </Routes>
     </BrowserRouter>
   )

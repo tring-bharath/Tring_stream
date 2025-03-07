@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
-import { FaEye,FaHeart,FaUser } from 'react-icons/fa';
+import { FaEye,FaHeart, FaUser } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { globaldata } from './Home';
+import VideoCard from '../components/VideoStreamingApp';
 const Dashboard = () => {
+
     const url="https://pixabay.com/api/videos/?key=49160670-8b09c7d4f9c7bed1e8a624b6b&q=";
 
     const [videos,setVideos]=useState([]);
@@ -24,22 +29,10 @@ const Dashboard = () => {
     },[])
   return (
     <div className='d-flex flex-wrap video-cards'>
-
-      {videos.map((video)=>
-    (<div className="video-card">
-      <img src={video.videos.medium.thumbnail} alt="video thumbnail" className="thumbnail" />
-      <div className="video-info">
-        <h3>{video.tags.split(",")[0]}</h3>
-
-        <div className="video-stats">
-          <span><FaHeart /> {video.likes}</span>
-          <span><FaEye /> {video.views}</span>
-        </div>
-      </div>
-    </div>
-    ))}
+      {videos.map((video)=>(<VideoCard video={video} />))}
     </div>
   )
 }
+
 
 export default Dashboard

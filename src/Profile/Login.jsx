@@ -4,9 +4,11 @@ import * as yup from 'yup';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Toaster,toast } from 'sonner';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
+  const nav=useNavigate();
 
   const schema = yup.object().shape({
     email: yup.string().email().required(),
@@ -39,11 +41,12 @@ const Login = () => {
         return;
       }
       if (username == "UserNotFound") {
-        console.log("Email address not registered");
         toast.error("Email address not registered")
         return;
       }
       toast.error(`Welcome ${username}`)
+      nav('/');
+
 
     } catch (error) {
       toast.error("Something went wrong")
@@ -69,8 +72,8 @@ const Login = () => {
           {...register("password")}
         />
         <p className="text-danger">{errors.password?.message}</p>
-        <button className="p-2 bg-primary mt-4 text-white" type="submit">
-          Submit
+        <button className="px-4 py-2 bg-primary mt-2 text-white rounded-1 align-self-center" type="submit">
+          Login
         </button>
       </form>
     </div>

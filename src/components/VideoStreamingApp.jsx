@@ -1,52 +1,52 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-const API_KEY = "49160670-8b09c7d4f9c7bed1e8a624b6b"; 
-const API_URL = `https://pixabay.com/api/videos/?key=${API_KEY}&q=`;
+import { FaEye, FaHeart } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const VideoStreamingApp = () => {
-  const [videos, setVideos] = useState([]);
-  const [selectedVideo, setSelectedVideo] = useState(null);
+const VideoCard = ({video}) => {
+  const [hover, setHover] = useState(false);
+  const nav=useNavigate();
+  const watchNow=(Videourl,tag)=>
+  {
+    nav("/videoplayer",{state:{Videourl,tag}})
+  }
+  const watchList= async(video)=>
+  {
+    await axios.post("http://localhost:5000/insert",video)
+    .then((res)=>console.log(res))
+    .catch((err)=>console.log(err)
+    );
 
-  useEffect(() => {
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((data) => {
-        setVideos(data.hits);
-        
-      })
-      .catch((error) => console.error("Error fetching videos:", error));
-  }, []);
-  
-
+  }
   return (
-    <div className="">
-      <h1 className="">React Video Streaming App</h1>
-      {selectedVideo && (
-  <video key={selectedVideo} controls className="" style={{margin:"20px",height:"100px",width:"100px"}}>
-    <source src={selectedVideo} type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-)}
-      <div className="flex gap-4 overflow-x-auto p-2" style={{margin:"20px"}}>
-        
-        
-        {videos.map((video) => (
-          <img
-          key={video.id}
-          src={video.videos.medium.thumbnail} 
-          alt=""
-          className=""
-          style={{margin:"20px",height:"100px",width:"100px"}}
-          onClick={() =>{ setSelectedVideo(video.videos.medium.url);
-            console.log(video);
-            
-          }}
-        />
-        
-        ))}
+    <div className="video-card"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}>
+      <img
+        src={video.videos.medium.thumbnail}
+        alt="video thumbnail"
+        className="thumbnail"
+      />
+      <div className="video-info">
+        <h3>{video.tags.split(",")[0]}</h3>
+        <div className="video-stats">
+          <span>
+            <FaHeart /> {video.likes}
+          </span>
+          <span>
+            <FaEye /> {video.views}
+          </span>
+        </div>
       </div>
+
+      {hover && (
+        <div className="overlay-buttons">
+          <button className="watch-now" onClick={()=>watchNow(video.videos.large.url,video.tags)}>Watch Now</button>
+          <button className="add-watchlist" onClick={()=>watchList(video)}>+ Watchlist</button>
+        </div>
+      )}
     </div>
   );
 };
 
-export default VideoStreamingApp;
+export default VideoCard;

@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { createContext, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Sidebar from './Sidebar'
 
+export const globaldata=createContext();
+
 const Home = () => {
+
+  const [videos,setVideos]=useState();
+
   return (
     <div className='d-flex'>
-      <Sidebar/>
+      <globaldata.Provider value={{videos,setVideos}}>
+      <Sidebar className='sidebar'/>
       <Outlet/>
+      </globaldata.Provider>
     </div>
   )
 }

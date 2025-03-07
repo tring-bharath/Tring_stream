@@ -1,6 +1,6 @@
 import React from 'react'
 
-const profiles = () => {
+const Profile = () => {
   return (
     <div>
       <h1>Profiles</h1>
@@ -8,4 +8,4 @@ const profiles = () => {
   )
 }
 
-export default profiles
+export default Profile

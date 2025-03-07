@@ -1,15 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
-import { Outlet } from 'react-router-dom'
-// import
-const Landingpage = () => {
+import { Outlet, useNavigate } from 'react-router-dom'
+import sideImage from '../assets/front_image.jpg'
+import '../css/Registration.css'
+const Landingpage = () => { 
+  const [active,setActive]=useState(0);
+  const nav=useNavigate();
+
+  const login=()=>
+  {
+    nav('/registration')
+    setActive(0);
+  }
+
+  const signup=()=>
+  {
+    nav('/registration/signup')
+    setActive(1);
+  }
   return (
-    <div className='d-flex flex-column justify-content-center align-items-center'>
-      <div className="register-button d-flex ">
-      <Button>Login</Button>
-      <Button>Sign-Up</Button>
+    <div className="registerContainer">
+      <div className='Container'>
+        <div className='formContainer shadow-lg'>
+          <div className="registerButton d-flex justify-content-center align-items-center">
+            <button onClick={()=>login()} className={`px-3 login py-2 ${active==0?"active":""}`} >Login</button>
+            <button onClick={()=>signup()} className={`px-3 signup py-2 ${active==1?"active":""}`}>Sign-Up</button>
+          </div>
+          <div className="outlet">
+            <Outlet />
+          </div>
+        </div>
       </div>
-      <Outlet/>
+      <div className="sideImage-container">
+        <img src={sideImage} className='sideImage' alt="" />
+      </div>
     </div>
   )
 }
