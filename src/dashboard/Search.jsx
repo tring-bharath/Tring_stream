@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { FaEye, FaHeart, FaUser } from 'react-icons/fa';
+import { FaEye, FaHeart, FaSearch, FaUser } from 'react-icons/fa';
+import VideoCard from '../components/VideoStreamingApp';
+import '../css/videoplayer.css'
+
 const Search = () => {
 
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("trending");
   const url = `https://pixabay.com/api/videos/?key=49160670-8b09c7d4f9c7bed1e8a624b6b&q=${search}`;
 
   const [videos, setVideos] = useState([]);
@@ -17,28 +20,23 @@ const Search = () => {
   }
   useEffect(() => {
     apicall();
-  }, [search])
+  }, []); 
+  useEffect(() => {
+    apicall();
+  }, [search])  
   return (
-    <>
+    <div className='constainer d-flex flex-column align-items-center '>
       <div className="search">
-        <input type="text" onChange={(e) => setSearch(e.target.value)} />
+      <FaSearch className="search-icon" size={30}/>
+        <input type="text" className='search-box display-8 h3 ps-2 align-items-center' placeholder='Type to Search' onKeyDown={(e) => {if (e.key === "Enter") {setSearch(e.target.value);}
+      }} />
       </div>
-      <div className='d-flex flex-wrap video-cards'>
-        {videos.map((video) =>
-        (<div className="video-card">
-          <img src={video.videos.medium.thumbnail} alt="video thumbnail" className="thumbnail" />
-          <div className="video-info">
-            <h3>{video.tags.split(",")[0]}</h3>
-
-            <div className="video-stats">
-              <span><FaHeart /> {video.likes}</span>
-              <span><FaEye /> {video.views}</span>
-            </div>
-          </div>
-        </div>
+      <div className='d-flex flex-wrap video-cards ms-3 mb-3'>
+        {videos.map((video) =>(
+          <VideoCard video={video} />
         ))}
       </div>
-    </>
+    </div >
   )
 }
 

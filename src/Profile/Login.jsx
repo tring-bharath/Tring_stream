@@ -27,7 +27,6 @@ const Login = () => {
     const query = `
     query {
       login(email: "${user.email}", password: "${user.password}")
-      
     }
 `;
     try {
@@ -44,6 +43,8 @@ const Login = () => {
         toast.error("Email address not registered")
         return;
       }
+      
+      localStorage.setItem("user",JSON.stringify(user));
       toast.error(`Welcome ${username}`)
       nav('/');
 

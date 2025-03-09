@@ -1,0 +1,21 @@
+.video-card:hover
+{
+  height: auto;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+
+}
+
+.video-card:hover .watch-now
+{
+  display: block;
+}
+.video-card:hover .add-watchlist
+{
+  display: block;
+}
+
+.watch-now,.add-watchlist
+{
+  display: none;
+}

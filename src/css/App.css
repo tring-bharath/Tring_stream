@@ -9,7 +9,6 @@
 {
   height: 100vh;
   padding:0px 60px 0px 10px;
-  
   position: sticky;
   top: 0;
 }
@@ -27,7 +26,10 @@
   width: 300px;
 }
 
-
+h4
+{
+  text-transform: capitalize;
+}
 .video-card{
   height: 230px;
   width: 300px;

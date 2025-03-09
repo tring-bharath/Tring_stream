@@ -38,6 +38,7 @@ export default function Signup() {
       });
       if (response.data.data.register == "successful") {
         toast.success("Successfully Registered!")
+        localStorage.setItem("user",JSON.stringify(data));
         nav('/registration');
 
       } else {
