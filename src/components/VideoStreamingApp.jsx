@@ -12,7 +12,7 @@ const VideoCard = ({video}) => {
   }
   const watchList= async(video)=>
   {
-    await axios.post("http://localhost:5000/insert",video)
+    await axios.post("https://nzqqkzs6-5000.inc1.devtunnels.ms/insert",video)
     .then((res)=>console.log(res))
     .catch((err)=>console.log(err)
     );

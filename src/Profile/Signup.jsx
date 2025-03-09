@@ -33,9 +33,9 @@ export default function Signup() {
           }
         `;
     try {
-      const response = await axios.post("http://localhost:3000/graphql", {
+      const response = await axios.post("https://nzqqkzs6-3000.inc1.devtunnels.ms/graphql", {
         query
-      });
+      });//http://localhost:3000/graphql
       if (response.data.data.register == "successful") {
         toast.success("Successfully Registered!")
         localStorage.setItem("user",JSON.stringify(data));
@@ -69,7 +69,7 @@ export default function Signup() {
         <p className="text-danger">{errors.password?.message}</p>
         <div className="mt-2 d-flex align-items-center">
           <input id="terms" type="checkbox" {...register("terms")} className="me-2" />
-          <label htmlFor="terms" className="d-flex align-self-center">I agree to the terms and conditions</label>
+          <label htmlFor="terms" className="d-flex align-self-center">I agree to the &nbsp;<a href="https://tringapps.com/" >terms and conditions</a></label>
         </div>
         <p className="text-danger">{errors.terms?.message}</p>
 

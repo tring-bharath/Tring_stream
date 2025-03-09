@@ -3,7 +3,16 @@
   height: auto;
   transform: scale(1.1);
   transition: all 0.3s ease;
-
+  font-family: "Rubik", sans-serif;
+}
+.tag
+{
+  margin-bottom: 0px;
+}
+.video-card
+{
+  font-family: "Rubik",sans-serif;
+  letter-spacing: 0.5px;
 }
 
 .video-card:hover .watch-now

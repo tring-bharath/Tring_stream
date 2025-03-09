@@ -30,7 +30,7 @@ const Login = () => {
     }
 `;
     try {
-      const response = await axios.post("http://localhost:3000/graphql", { query });
+      const response = await axios.post("https://nzqqkzs6-3000.inc1.devtunnels.ms/graphql", { query });//http://localhost:3000/graphql
       console.log(response);
 
       const username = response.data.data.login;
@@ -44,7 +44,7 @@ const Login = () => {
         return;
       }
       
-      localStorage.setItem("user",JSON.stringify(user));
+      localStorage.setItem("user",JSON.stringify(username));
       toast.error(`Welcome ${username}`)
       nav('/');
 
