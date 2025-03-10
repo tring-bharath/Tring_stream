@@ -9,6 +9,30 @@
 {
   margin-bottom: 0px;
 }
+.video-title,.likes,.views
+{
+  color: rgb(223, 223, 223);
+}
+.video-card:hover .video-title
+{
+  color: black;
+}
+.video-card:hover .likes
+{
+  color: black;
+}
+.video-card:hover .views
+{
+  color: black;
+}
+.video-card:hover
+{
+  background-color: grey;
+}
+.thumbnail
+{
+  cursor: pointer;
+}
 .video-card
 {
   font-family: "Rubik",sans-serif;

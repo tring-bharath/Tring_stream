@@ -15,22 +15,6 @@ export const ProfileName=createContext();
 const AppRoutes = () => {
   const [userName,setUsername]=useState();
 
-  // const setuser=async()=>
-  // {
-  //   const user=null;
-  //   await localStorage.getItem("user",JSON.parse(user));
-  //   console.log(user);
-    
-  //   setUsername(user);
-  // }
-  // useEffect(()=>
-  // {
-  //   setuser();
-  // },[userName])
-  // useEffect(()=>
-  //   {
-  //     setuser();
-  //   })
   return (
       <ProfileName.Provider value={{userName,setUsername}}>
     <BrowserRouter>

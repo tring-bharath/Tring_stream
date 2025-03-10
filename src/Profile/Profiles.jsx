@@ -41,12 +41,12 @@ const Profile = () => {
         :
         <div className="history d-flex flex-column w-100 h-100">
           <div className="header d-flex justify-content-between w-100">
-            <div className="history h2 align-self-center ms-3">History<FaHistory /></div>
+            <div className="history h2 align-self-center ms-3 text-white">History <FaHistory /></div>
             <div className="nav align-self-end m-3 ">
               <button className="px-3 py-2 rounded-1 h5 text-white bg-primary" onClick={logout}>Logout</button>
             </div>
           </div>
-          <div className='d-flex px-4 flex-wrap video-cards mt-4'>
+          <div className='d-flex px-3 flex-wrap video-cards'>
             {videos.map((video) => (<HistoryCard video={video} showCards={showCards} />))}
           </div>
         </div>

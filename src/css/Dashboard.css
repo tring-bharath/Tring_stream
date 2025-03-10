@@ -6,7 +6,10 @@
   filter: brightness(50%);
 
 }
-
+.carousel-btn
+{
+  background-color: rgba(0, 106, 167, 0.899);
+}
 .carousel-caption
 {
   text-transform: capitalize;

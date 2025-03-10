@@ -5,7 +5,7 @@ import Sidebar from './Sidebar'
 const Home = () => {
 
   return (
-    <div className='d-flex'>
+    <div className='d-flex '>
       <Sidebar className='sidebar'/>
       <Outlet/>
     </div>

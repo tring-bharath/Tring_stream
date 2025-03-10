@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import axios from "axios";
-import { FaEye, FaHeart, FaUser } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { FaEye, FaHeart } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import '../css/Dashboard.css'
 import Carousel from 'react-bootstrap/Carousel';
 import VideoCard from '../components/VideoStreamingApp';
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Alert } from 'react-bootstrap';
 
 const Dashboard = () => {
   const nav=useNavigate();
-  const url = "https://pixabay.com/api/videos/?key=49160670-8b09c7d4f9c7bed1e8a624b6b&q=living";
+  const url = "https://pixabay.com/api/videos/?key=49160670-8b09c7d4f9c7bed1e8a624b6b&q=nature";
 
   const [videos, setVideos] = useState([]);
   const apicall = () => {
@@ -47,11 +44,11 @@ const Dashboard = () => {
               <h1 className="banner-title align-self-start">{video.tags}</h1>
 
               <div className="banner-footer d-flex align-items-center">
-                <button className='btn rounded-1 me-3 bg-info text-white' onClick={()=>watchNow(video.videos.large.url,video.tags,video.videos.large.thumbnail)}>Watch Now</button>
-                <div className=" d-flex flex-column align-items-center">
+                <button className='btn rounded-1 me-3 mt-3 carousel-btn text-white' onClick={()=>watchNow(video.videos.large.url,video.tags,video.videos.large.thumbnail)}>Watch Now</button>
+                {/* <div className=" d-flex flex-column align-items-center">
                   <p className='banner-description'><FaHeart /> {video.likes}</p>
                   <p className='banner-description'><FaEye />{video.views}</p>
-                </div>
+                </div> */}
               </div>
             </Carousel.Caption>
           </Carousel.Item>

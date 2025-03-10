@@ -9,7 +9,7 @@ export default function Signup() {
 
   const schema = yup.object().shape({
     first_name: yup.string().required("First name is required"),
-    last_name: yup.string().required("Last name is required"),
+    last_name: yup.string(),
     email: yup.string().email().required(),
     password: yup.string().min(8).required(),
     terms: yup.bool().oneOf([true], "You must accept the terms and conditions")

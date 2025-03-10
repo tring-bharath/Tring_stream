@@ -29,10 +29,10 @@ const Search = () => {
   return (
     <div className='constainer d-flex flex-column align-items-center w-100'>
       <div className="search">
-      <FaSearch className="search-icon" size={30}/>
-        <input type="text" className='search-box display-8 h3 ps-2 align-items-center' placeholder='Type to Search' onChange={(e)=>setSearch(e.target.value)}/>
+      <FaSearch className="search-icon text-white" size={30}/>
+        <input type="text" className='search-box display-8 h3 align-items-center' placeholder='Type to Search' onChange={(e)=>setSearch(e.target.value)}/>
       </div>
-      <div className='d-flex flex-wrap video-cards ms-3 mb-3'>
+      <div className='d-flex flex-wrap video-cards justify-content-start w-100 ms-3 mb-3'>
         {videos.map((video) =>(
           <VideoCard video={video} />
         ))}

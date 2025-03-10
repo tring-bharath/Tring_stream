@@ -5,7 +5,10 @@
   margin: 0px;
   box-sizing: border-box;
 }
-
+/* .app
+{
+  background-color: rgb(44, 44, 44);
+} */
 .side-bar
 {
   height: 100vh;

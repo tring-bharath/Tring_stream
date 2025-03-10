@@ -16,19 +16,19 @@ const Wathclist = () => {
 
   useEffect(() => {
     showCards();
-
   }, [])
+
   return (
     <div className="container w-100">
       {user!=null?
     <div className='userAvailable'>
-      <p className='h1 ms-2 mt-2'>Watch List</p>
+      <p className='h1 ms-2 mt-2 text-white'>Watch List</p>
       <div className='d-flex px-2 flex-wrap video-cards mt-4'>
         {videos.map((video) => (<WatchListCard video={video} showCards={showCards} />))}
       </div>
     </div>
     :
-        <div className="userUnavailable w-100 d-flex justify-content-center align-items-center h3 h-100">
+        <div className="userUnavailable w-100 d-flex justify-content-center align-items-center h3 h-100 text-white ">
           Login to save and watch videos
         </div>
 }

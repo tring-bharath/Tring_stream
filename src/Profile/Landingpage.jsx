@@ -19,7 +19,7 @@ const Landingpage = () => {
     setActive(1);
   }
   return (
-    <div className="registerContainer">
+    <div className="registerContainer bg-white">
       <div className='Container'>
         <div className='formContainer shadow-lg'>
           <div className="registerButton d-flex justify-content-center align-items-center">
