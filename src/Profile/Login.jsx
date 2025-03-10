@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Toaster,toast } from 'sonner';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { ProfileName } from '../routes/AppRoutes';
+
 
 const Login = () => {
+  const {userName,setUsername}=useContext(ProfileName);
 
   const nav=useNavigate();
 
@@ -45,6 +48,9 @@ const Login = () => {
       }
       
       localStorage.setItem("user",JSON.stringify(username));
+      setUsername(username);
+      console.log(userName);
+      
       toast.error(`Welcome ${username}`)
       nav('/');
 
@@ -59,14 +65,14 @@ const Login = () => {
       <Toaster />
       <form className="form d-flex flex-column container " onSubmit={handleSubmit(onSubmit)}>
         <h3 className="text-center">Login</h3>
-        <label className="mt-3">Email:</label>
+        <label className="mt-3">Email*</label>
         <input
           className="form-control border-success"
           type="email"
           {...register("email")}
         />
         <p className="text-danger">{errors.email?.message}</p>
-        <label>Password:</label>
+        <label>Password*</label>
         <input
           className="form-control border-success"
           type="password"

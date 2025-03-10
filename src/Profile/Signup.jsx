@@ -55,16 +55,16 @@ export default function Signup() {
       <Toaster />
       <form className="form-container d-flex flex-column container" onSubmit={handleSubmit(onSubmit)}>
         <h3 className="text-center">Sign-Up</h3>
-        <label className="mt-2">First Name:</label>
+        <label className="mt-2">First Name*</label>
         <input {...register("first_name")} className="form-control" placeholder="First Name" />
         <p className="text-danger">{errors.first_name?.message}</p>
         <label className="mt-2">Last Name:</label>
         <input {...register("last_name")} className="form-control" placeholder="Last Name" />
         <p className="text-danger">{errors.last_name?.message}</p>
-        <label className="mt-2">Email:</label>
+        <label className="mt-2">Email*</label>
         <input {...register("email")} className="form-control" placeholder="Email" />
         <p className="text-danger">{errors.email?.message}</p>
-        <label className="mt-2">Password:</label>
+        <label className="mt-2">Password*</label>
         <input {...register("password")} className="form-control" type="password" placeholder="Password" />
         <p className="text-danger">{errors.password?.message}</p>
         <div className="mt-2 d-flex align-items-center">
