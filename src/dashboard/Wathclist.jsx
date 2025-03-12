@@ -7,9 +7,13 @@ import { useNavigate } from 'react-router-dom';
 
 const Wathclist = () => {
   const [videos, setVideos] = useState([]);
+  const userId=localStorage.getItem("id");
+  
   const showCards = async () => {
-    const res = await axios.get("https://nzqqkzs6-5000.inc1.devtunnels.ms/watchList")//http://localhost:5000/watchList
+    const res = await axios.get(`https://nzqqkzs6-5000.inc1.devtunnels.ms/watchList/${userId}`)//http://localhost:5000/watchList
     setVideos(res.data)
+    console.log(res.data);
+    
   }
 
   const user=JSON.parse(localStorage.getItem("user"));
@@ -17,18 +21,18 @@ const Wathclist = () => {
   useEffect(() => {
     showCards();
   }, [])
-
+  
   return (
     <div className="container w-100">
       {user!=null?
     <div className='userAvailable'>
-      <p className='h1 ms-2 mt-2 text-white'>Watch List</p>
+      <p className='h1 ms-2 mt-2'>Watch List</p>
       <div className='d-flex px-2 flex-wrap video-cards mt-4'>
         {videos.map((video) => (<WatchListCard video={video} showCards={showCards} />))}
       </div>
     </div>
     :
-        <div className="userUnavailable w-100 d-flex justify-content-center align-items-center h3 h-100 text-white ">
+        <div className="userUnavailable w-100 d-flex justify-content-center align-items-center h3 h-100  ">
           Login to save and watch videos
         </div>
 }
@@ -60,8 +64,8 @@ const WatchListCard = ({ video, showCards }) => {
       </div>
       {hover && (
         <div className="overlay-buttons d-flex mb-2">
-          <button className="watch-now btn rounded-1 bg-primary text-white px-2 mx-2 fw-semibold" onClick={() => watchNow(video.videoURL, video.tags, video.thumbnail)}>Watch Now</button>
-          <button className="add-watchlist btn bg-danger text-white fw-semibold" onClick={() => remove(video)}>Remove</button>
+          <button className="watch-now btn rounded-1 bg-primary  px-2 mx-2 fw-semibold" onClick={() => watchNow(video.videoURL, video.tags, video.thumbnail)}>Watch Now</button>
+          <button className="add-watchlist btn bg-danger  fw-semibold" onClick={() => remove(video)}>Remove</button>
         </div>
       )}
     </div>

@@ -5,9 +5,9 @@ import Sidebar from './Sidebar'
 const Home = () => {
 
   return (
-    <div className='d-flex '>
-      <Sidebar className='sidebar'/>
-      <Outlet/>
+    <div className='d-flex'>
+      <Sidebar className=''/>
+      <Outlet className='outlet position-absolute'/>
     </div>
   )
 }

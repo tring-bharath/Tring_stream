@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 function App() {
   
   return (
-    <div className='app bg-dark'>
+    <div className='app '>
     <ToastContainer position="top-right" autoClose={2000} />
     <AppRoutes/>
     </div>

@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { FaEye, FaHeart } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import '../css/Dashboard.css'
 import Carousel from 'react-bootstrap/Carousel';
 import VideoCard from '../components/VideoStreamingApp';
-import { Alert } from 'react-bootstrap';
+import axios from 'axios';
 
 const Dashboard = () => {
   const nav=useNavigate();
-  const url = "https://pixabay.com/api/videos/?key=49160670-8b09c7d4f9c7bed1e8a624b6b&q=nature";
+  const url = "https://nzqqkzs6-5000.inc1.devtunnels.ms/getAllVideos";//https://pixabay.com/api/videos/?key=49160670-8b09c7d4f9c7bed1e8a624b6b&q=nature
 
   const [videos, setVideos] = useState([]);
   const apicall = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setVideos(data.hits);
+        setVideos(data);
+        console.log(videos);
+        
       })
 
-
   }
-  const watchNow=(Videourl,tag,thumbnail)=>
+  const watchNow=(video)=>
     {
-      nav("/videoplayer",{state:{Videourl,tag,thumbnail}})
+      nav("/videoplayer",{state:video})
     }
   useEffect(() => {
     console.log(videos)
@@ -31,24 +31,19 @@ const Dashboard = () => {
     apicall();
   }, [])
   return (
-    <div className="container ">
+    <div className="carousel-container">
       <Carousel wrap={true} interval={2000} className='carousel mb-3'>
         {videos.map((video) => (
           <Carousel.Item>
             <img
-              src={video.videos.large.thumbnail}
+              src={video?.thumbnail}
               alt="Banner"
               className="banner-image"
             />
             <Carousel.Caption className='banner'>
               <h1 className="banner-title align-self-start">{video.tags}</h1>
-
               <div className="banner-footer d-flex align-items-center">
-                <button className='btn rounded-1 me-3 mt-3 carousel-btn text-white' onClick={()=>watchNow(video.videos.large.url,video.tags,video.videos.large.thumbnail)}>Watch Now</button>
-                {/* <div className=" d-flex flex-column align-items-center">
-                  <p className='banner-description'><FaHeart /> {video.likes}</p>
-                  <p className='banner-description'><FaEye />{video.views}</p>
-                </div> */}
+                <button className='px-3 py-2 rounded-1 me-3 mt-3 carousel-btn ' onClick={()=>watchNow(video)}>Watch Now</button>
               </div>
             </Carousel.Caption>
           </Carousel.Item>

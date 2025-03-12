@@ -20,7 +20,7 @@
 }
 .login,.signup
 {
-    width:110px;
+    width:70%;
     font-weight: 600;
 }
 
@@ -44,7 +44,7 @@ p
     position: fixed;
     box-shadow: 10px;
     height:80vh;
-    width: 30%;
+    min-width: 443px;
     padding: 50px;
     font-family: 'poppins';
     font-weight: 600;

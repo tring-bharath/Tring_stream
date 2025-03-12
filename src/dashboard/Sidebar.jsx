@@ -21,27 +21,26 @@ const Sidebar = () => {
     setUsername();
   },[user])
   return (
-    <div className="sidebar bg-dark p-3 d-flex flex-column gap-4" >
-      <h3 className="text-white text-center my-4">Menu</h3>
+    <div className="sidebar p-3 d-flex flex-column justify-content-center gap-4" >
       
-      <Link to="/" className={`sidebar-link d-flex align-items-center p-3 rounded text-decoration-none ${isActive('/') ? 'active' : ''}`}>
-        <FaHome size={24} className="me-3" />
-        <h5 className="mb-0">Home</h5>
+      <Link to="/" className={`sidebar-link d-flex align-items-center py-3 px-2 rounded text-decoration-none ${isActive('/') ? 'active' : ''}`}>
+        <FaHome size={24} className=" sidebar-icons" />
+        <h5 className="mb-0 sidebar-items">Home</h5>
       </Link>
       
-      <Link to="/search" className={`sidebar-link d-flex align-items-center p-3 rounded text-decoration-none ${isActive('/search') ? 'active' : ''}`}>
-        <FaSearch size={24} className="me-3" />
-        <h5 className="mb-0">Search</h5>
+      <Link to="/search" className={`sidebar-link d-flex align-items-center py-3 px-2 rounded text-decoration-none ${isActive('/search') ? 'active' : ''}`}>
+        <FaSearch size={24} className=" sidebar-icons" />
+        <h5 className="mb-0 sidebar-items">Search</h5>
       </Link>
       
-      <Link to="/watchlist" className={`sidebar-link d-flex align-items-center p-3 rounded text-decoration-none ${isActive('/watchlist') ? 'active' : ''}`}>
-        <FaBookmark size={24} className="me-3" />
-        <h5 className="mb-0">Watch List</h5>
+      <Link to="/watchlist" className={`sidebar-link d-flex align-items-center py-3 px-2 rounded text-decoration-none ${isActive('/watchlist') ? 'active' : ''}`}>
+        <FaBookmark size={24} className=" sidebar-icons" />
+        <h5 className="mb-0 sidebar-items">Watch List</h5>
       </Link>
       
-      <Link to="/profile" className={`sidebar-link d-flex align-items-center p-3 rounded text-decoration-none ${isActive('/profile') ? 'active' : ''}`}>
-        <CgProfile size={24} className="me-3" />
-        <h5 className='username d-flex align-self-center'>{user==null?"Profile":user}</h5>  
+      <Link to="/profile" className={`sidebar-link d-flex align-items-center py-3 px-2 rounded text-decoration-none ${isActive('/profile') ? 'active' : ''}`}>
+        <CgProfile size={24} className=" sidebar-icons" />
+        <h5 className='username sidebar-items d-flex align-self-center'>{user==null?"Profile":user}</h5>  
       </Link>
     </div>
   );

@@ -30,13 +30,18 @@ const Login = () => {
     const query = `
     query {
       login(email: "${user.email}", password: "${user.password}")
+      {
+        id
+        user
+      }
     }
 `;
     try {
       const response = await axios.post("https://nzqqkzs6-3000.inc1.devtunnels.ms/graphql", { query });//http://localhost:3000/graphql
       console.log(response);
 
-      const username = response.data.data.login;
+      const username = response.data.data.login.user;
+      const userId=response.data.data.login.id;
 
       if (username == "InvalidCredentials") {
         toast.error("Invalid Credentials")
@@ -48,6 +53,7 @@ const Login = () => {
       }
       
       localStorage.setItem("user",JSON.stringify(username));
+      localStorage.setItem("id",JSON.stringify(userId));
       setUsername(username);
       console.log(userName);
       
@@ -63,7 +69,7 @@ const Login = () => {
   return (
     <div>
       <Toaster />
-      <form className="form d-flex flex-column container " onSubmit={handleSubmit(onSubmit)}>
+      <form className="form-container d-flex flex-column container" onSubmit={handleSubmit(onSubmit)}>
         <h3 className="text-center">Login</h3>
         <label className="mt-3">Email*</label>
         <input

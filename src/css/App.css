@@ -5,10 +5,12 @@
   margin: 0px;
   box-sizing: border-box;
 }
-/* .app
+.ellipsis
 {
-  background-color: rgb(44, 44, 44);
-} */
+  overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 .side-bar
 {
   height: 100vh;
@@ -34,15 +36,11 @@ h4
 {
   text-transform: capitalize;
 }
-.video-card{
-  height: 230px;
-  width: 300px;
-  
-}
-.video-cards
+
+/* .video-cards
 {
   gap: 20px;
-}
+} */
 .sideImage
 {
   height: 100vh;

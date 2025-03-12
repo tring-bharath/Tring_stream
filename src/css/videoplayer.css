@@ -4,23 +4,7 @@
     height: 90vh;
     width: 100%;
 }
-.search-box
-{
-    min-width: 150vb ;
-}
-.search
-{
-    margin-left: 20px;
-    height:70px;
-    margin: 30px 0px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-.search-icon
-{
-    align-self: center;
-}
+
 .search-box::placeholder {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 30px; 
