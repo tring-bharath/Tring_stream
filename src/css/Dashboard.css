@@ -9,6 +9,11 @@
   filter: brightness(50%);
 
 }
+.eyeButton
+{
+  margin-left: -30px;
+  cursor: pointer;
+}
 .carousel
 {
   width: 100%;
@@ -50,3 +55,17 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.infinte-scroll
+{
+  margin: 0px;
+  padding: 0px;
+}
+.carousel-container
+{
+  width: 94%;
+}
+/* @media (max-width: 768px) {
+  .carousel-container {
+    height: 25vh !important;
+  }
+} */

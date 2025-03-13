@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const Wathclist = () => {
+const Watchlist = () => {
   const [videos, setVideos] = useState([]);
   const userId=localStorage.getItem("id");
   
@@ -72,4 +72,4 @@ const WatchListCard = ({ video, showCards }) => {
   )
 
 }
-export default Wathclist
+export default Watchlist

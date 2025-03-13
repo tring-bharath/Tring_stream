@@ -36,11 +36,13 @@ h4
 {
   text-transform: capitalize;
 }
-
-/* .video-cards
+.video-cards
 {
-  gap: 20px;
-} */
+  width: 100%;  
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0px;
+}
 .sideImage
 {
   height: 100vh;

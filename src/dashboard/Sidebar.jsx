@@ -18,7 +18,7 @@ const Sidebar = () => {
 
   useEffect(()=>
   {
-    setUsername();
+    setUsername(user);
   },[user])
   return (
     <div className="sidebar p-3 d-flex flex-column justify-content-center gap-4" >
